@@ -20,7 +20,7 @@ public class Job implements Comparable<Job> {
   public static Job getRandomJob() {
     int weight         = 1 + (int)(Math.random() * ((100 - 1) + 1));
     int processingTime = 1 + (int)(Math.random() * ((200 - 1) + 1));
-    int dueDate        = (1 + processingTime) + (int)(Math.random() * ((2*processingTime - (1 + processingTime)) + 1));
+    int dueDate        = (1 + processingTime) + (int)(Math.random() * ((5*processingTime - (1 + processingTime)) + 1));
 
     return new Job(weight, processingTime, dueDate);
   }

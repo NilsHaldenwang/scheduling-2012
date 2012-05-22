@@ -16,6 +16,10 @@ public class DynamicProgrammingSolver {
     return calculateSolutionJobs();
   }
 
+  public int getMinimalObjectiveFunctionValue(){
+    return tmpMatrix[tmpMatrix.length - 1][tmpMatrix[0].length - 1];
+  }
+
   private List<Job> calculateSolutionJobs() {
     int t = problemInstance.jobs[problemInstance.numberOfJobs - 1].dueDate;
     List<Job> resultSet = new LinkedList<Job>();
@@ -79,6 +83,7 @@ public class DynamicProgrammingSolver {
     for(Job j: instance.jobs) {
       System.out.println(j);
     }
+    System.out.println("----------------------------------------------------");
     System.out.println();
     System.out.println();
 
@@ -87,15 +92,21 @@ public class DynamicProgrammingSolver {
 
     long end = System.nanoTime();
 
-    System.out.println("Solution:");
+    System.out.println("Late Jobs:");
     System.out.println("----------------------------------------------------");
     for(Job j: result) {
       System.out.println(j);
     }
     System.out.println("----------------------------------------------------");
+    System.out.println();
+    System.out.println();
+
+    System.out.println("Stats: ");
+    System.out.println("----------------------------------------------------");
     System.out.println("The operation took: " + (double)((end - start) * 1000000.0) + " seconds");
     System.out.println("The problem instance size was: " + instance.numberOfJobs);
-    System.out.println("The solution size is: " + result.size());
+    System.out.println("The number of late jobs: " + result.size());
+    System.out.println("The objective function value of the optimal solution is: " + solver.getMinimalObjectiveFunctionValue());
     System.out.println("----------------------------------------------------");
   }
 }
